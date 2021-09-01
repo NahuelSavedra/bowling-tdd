@@ -25,10 +25,21 @@ public class BowlingGameTest {
         rollMany(20,1);
         assertEquals(20,bowlingGame.score());
     }
+    @Test
+    public void testOneSpare() throws Exception {
+        rollSpare();
+        bowlingGame.roll(3);
+        rollMany(17,0);
+        assertEquals(16, bowlingGame.score());
+    }
     // Refactor Method
     private void rollMany(int n, int pins){
         for (int i = 0; i < n; i++) {
             bowlingGame.roll(pins);
         }
+    }
+    private void rollSpare() {
+        bowlingGame.roll(5);
+        bowlingGame.roll(5);
     }
 }
